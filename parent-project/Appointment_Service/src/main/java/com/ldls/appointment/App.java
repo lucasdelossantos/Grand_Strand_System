@@ -1,4 +1,4 @@
-package com.ldls;
+package com.ldls.appointment;
 
 /**
  * Hello world!

@@ -1,4 +1,8 @@
-package com.ldls;
+/*
+ * Copyright (c) 2022 Lucas de los Santos
+ */
+
+package com.ldls.contact;
 
 /**
  * Hello world!
