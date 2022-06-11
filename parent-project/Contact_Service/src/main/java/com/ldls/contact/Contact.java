@@ -22,7 +22,7 @@ public class Contact {
 
     public Contact(String contactId,  String firstName, String lastName, String phoneNumber, String address ) {
         if (contactId == null) {
-            throw new IllegalArgumentException("Contact ID cannot be empty");
+            throw new IllegalArgumentException("Contact ID cannot be null");
         }
         else if (contactId.length() > uuidLength) {
             throw new IllegalArgumentException("Contact ID cannot be longer than " + uuidLength + " characters");
@@ -31,7 +31,7 @@ public class Contact {
             this.contactId = contactId;
         }
         if (firstName == null) {
-            throw new IllegalArgumentException("First name cannot be empty");
+            throw new IllegalArgumentException("First name cannot be null");
         }
         else if (firstName.length() > firstNameLength) {
             throw new IllegalArgumentException("First name cannot be longer than " + firstNameLength + " characters");
@@ -40,7 +40,7 @@ public class Contact {
             this.firstName = firstName;
         }
         if (lastName == null) {
-            throw new IllegalArgumentException("Last name cannot be empty");
+            throw new IllegalArgumentException("Last name cannot be null");
         }
         else if (lastName.length() > lastNameLength) {
             throw new IllegalArgumentException("Last name cannot be longer than " + lastNameLength + " characters");
@@ -50,18 +50,18 @@ public class Contact {
         }
         String regex = "[0-9]+";
         if (phoneNumber == null) {
-            throw new IllegalArgumentException("Phone Number cannot be empty");
+            throw new IllegalArgumentException("Phone Number cannot be null");
         }
         else if (phoneNumber.length() != phoneNumLength) {
             throw new IllegalArgumentException("Phone number length invalid. It must be " + phoneNumLength + " digits");
         } else if (!phoneNumber.matches(regex)) {
-            throw new IllegalArgumentException("Phone number cannot only contain numbers");
+            throw new IllegalArgumentException("Phone number cannot contain letters");
         }
         else {
             this.phoneNumber = phoneNumber;
         }
         if (address == null) {
-            throw new IllegalArgumentException("Address cannot be empty");
+            throw new IllegalArgumentException("Address cannot be null");
         }
         else if (address.length() > addressLength) {
             throw new IllegalArgumentException("Address cannot be longer than " + addressLength + " characters");

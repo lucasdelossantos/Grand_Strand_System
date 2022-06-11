@@ -6,15 +6,18 @@ package com.ldls.contact;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static com.ldls.contact.ContactService.uuid;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ContactTest {
+
     @Test
     public void createUserWithContactIdLargerThanTen(){
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> {
-                    Contact c1 = new Contact("99999999999","Allessandro", "de la Hoya", "3136674567","123 Main Street");
+                    Contact c1 = new Contact("99999999999","Alessandro", "de la Hoya", "3136674567","123 Main Street");
                     ContactService contactService = new ContactService();
                     System.out.println(ContactService.addContact(c1));
                 });
@@ -25,11 +28,11 @@ public class ContactTest {
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> {
-                    Contact c1 = new Contact(null,"Allessandro", "de la Hoya", "3136674567","123 Main Street");
+                    Contact c1 = new Contact(null,"Alessandro", "de la Hoya", "3136674567","123 Main Street");
                     ContactService contactService = new ContactService();
                     System.out.println(ContactService.addContact(c1));
                 });
-        Assertions.assertEquals("Contact ID cannot be empty", thrown.getMessage());
+        Assertions.assertEquals("Contact ID cannot be null", thrown.getMessage());
     }
     @Test
     public void createUserWithFirstNameLargerThanTen(){
@@ -51,7 +54,7 @@ public class ContactTest {
                     ContactService contactService = new ContactService();
                     System.out.println(ContactService.addContact(c1));
                 });
-        Assertions.assertEquals("First name cannot be empty", thrown.getMessage());
+        Assertions.assertEquals("First name cannot be null", thrown.getMessage());
     }
     @Test
     public void createUserWithLastNameLargerThanTen() {
@@ -74,7 +77,7 @@ public class ContactTest {
                     ContactService contactService = new ContactService();
                     System.out.println(ContactService.addContact(c1));
                 });
-        Assertions.assertEquals("Last name cannot be empty", thrown.getMessage());
+        Assertions.assertEquals("Last name cannot be null", thrown.getMessage());
     }
 
     @Test
@@ -98,7 +101,19 @@ public class ContactTest {
                     ContactService contactService = new ContactService();
                     System.out.println(ContactService.addContact(c1));
                 });
-        Assertions.assertEquals("Phone Number cannot be empty", thrown.getMessage());
+        Assertions.assertEquals("Phone Number cannot be null", thrown.getMessage());
+    }
+
+    @Test
+    public void createUserWithPhoneNumberContainingLetters(){
+        IllegalArgumentException thrown = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    Contact c1 = new Contact("999","Alessandro", "de la Hoya", "N9512378Y6","123 Main Street");
+                    ContactService contactService = new ContactService();
+                    System.out.println(ContactService.addContact(c1));
+                });
+        Assertions.assertEquals("Phone number cannot contain letters", thrown.getMessage());
     }
 
 
@@ -123,7 +138,20 @@ public class ContactTest {
                     ContactService contactService = new ContactService();
                     System.out.println(ContactService.addContact(c1));
                 });
-        Assertions.assertEquals("Address cannot be empty", thrown.getMessage());
+        Assertions.assertEquals("Address cannot be null", thrown.getMessage());
     }
 
+    @Test
+    public void testSetterandGetter(){
+        Contact c1 = new Contact(uuid," "," ","5556661234"," ");
+        c1.setPhoneNumber("5555551111");
+        c1.setAddress("123 Main Street");
+        c1.setFirstName("Thomas");
+        c1.setLastName("Magnum");
+        System.out.println();
+        System.out.println(c1.getPhoneNumber());
+        System.out.println(c1.getAddress());
+        System.out.println(c1.getFirstName());
+        System.out.println(c1.getLastName());
+    }
 }

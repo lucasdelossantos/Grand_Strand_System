@@ -16,6 +16,7 @@ public class AppointmentTest {
 
     public LocalDate date = LocalDate.of(2023,10,31);
     public LocalDate date2 = LocalDate.of(1999,07,12);
+    public LocalDate date3 = LocalDate.of(2099,10,31);
     @Test
     public void createNullAppointmentId(){
         IllegalArgumentException thrown = assertThrows(
@@ -93,6 +94,16 @@ public class AppointmentTest {
                 });
         Assertions.assertEquals("Appointment Date cannot be in the past", thrown.getMessage());
         System.out.println("Past Date Test - Passed");
+    }
+
+    @Test
+    public void testSetterAndGetter(){
+        Appointment a1 = new Appointment(uuid, " ", date3);
+        a1.setDescription("Simple Unit Test - Passed");
+        a1.setAppointmentDate(date3);
+        System.out.println();
+        System.out.println(a1.getDescription());
+        System.out.println(a1.getAppointmentDate());
     }
 
 }

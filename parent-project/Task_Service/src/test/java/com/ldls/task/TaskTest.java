@@ -97,4 +97,16 @@ public class TaskTest {
         System.out.println("Create Null Description - Passed");
     }
 
+    @Test
+    public void testSetterAndGetter(){
+        Task t1 = new Task(" ", " ", " ");
+        t1.setTaskId(uuid);
+        t1.setName("TestSetAndGet");
+        t1.setDescription("Simple Unit Test - Passed");
+        System.out.println();
+        System.out.println(t1.getTaskId());
+        System.out.println(t1.getName());
+        System.out.println(t1.getDescription());
+    }
+
 }
