@@ -9,9 +9,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <groupId>com.ldls.contact</groupId>
   <artifactId>Contact_Service</artifactId>
-  <version>1.0-SNAPSHOT</version>
 
   <name>Contact_Service</name>
 

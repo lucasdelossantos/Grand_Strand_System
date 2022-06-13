@@ -9,9 +9,7 @@
   <version>1.0-SNAPSHOT</version>
 </parent>
 
-  <groupId>com.ldls.task</groupId>
   <artifactId>Task_Service</artifactId>
-  <version>1.0-SNAPSHOT</version>
 
   <name>Task_Service</name>
 
